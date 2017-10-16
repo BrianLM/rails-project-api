@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :group_memberships
+  resources :groups
   resources :lists
   resources :items
   resources :examples, except: %i[new edit]
