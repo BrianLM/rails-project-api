@@ -1,16 +1,23 @@
+# frozen_string_literal: true
+
 class ListItemsController < ApplicationController
-  before_action :set_list_item, only: [:show, :update, :destroy]
+  before_action :set_list_item, only: %i[show update destroy]
 
-  # GET /list_items
-  def index
-    @list_items = ListItem.all
-
-    render json: @list_items
-  end
+  # Removed: No use case
+  # # GET /list_items
+  # def index
+  #   @list_items = ListItem.all
+  #
+  #   render json: @list_items
+  # end
 
   # GET /list_items/1
   def show
-    render json: @list_item
+    if current_user.lists.list_items.find(params[:id])
+      render json: @list_item
+    else
+      head :no_content
+    end
   end
 
   # POST /list_items
@@ -38,14 +45,14 @@ class ListItemsController < ApplicationController
     @list_item.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_list_item
-      @list_item = ListItem.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_list_item
+    @list_item = ListItem.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def list_item_params
-      params.require(:list_item).permit(:purchased, :quantity, :list_id, :item_id)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def list_item_params
+    params.require(:list_item).permit(:purchased, :quantity, :list_id, :item_id)
+  end
+  private :set_list_item, :list_item_params
 end
