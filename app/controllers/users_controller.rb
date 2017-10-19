@@ -55,7 +55,7 @@ class UsersController < ProtectedController
   end
 
   def showemail
-    user = User.where('email LIKE ?', "#{params[:id]}%")
+    user = User.where(email: params[:id])
     render json: user
   end
 
