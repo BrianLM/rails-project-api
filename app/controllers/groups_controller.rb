@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class GroupsController < ProtectedController
-  before_action :set_group, only: [:show, :update, :destroy]
+  before_action :set_group, only: %i[show update destroy]
 
   # GET /groups
   def index
-    @groups = Group.all
+    @groups = current_user.groups.all
 
     render json: @groups
   end
@@ -15,7 +17,7 @@ class GroupsController < ProtectedController
 
   # POST /groups
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.build(group_params)
 
     if @group.save
       render json: @group, status: :created, location: @group
@@ -38,14 +40,14 @@ class GroupsController < ProtectedController
     @group.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = current_user.groups.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def group_params
-      params.require(:group).permit(:name)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def group_params
+    params.require(:group).permit(:name)
+  end
+  private :set_group, :group_params
 end
