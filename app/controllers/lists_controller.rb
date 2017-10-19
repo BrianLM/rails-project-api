@@ -24,6 +24,22 @@ class ListsController < ApplicationController
     end
   end
 
+  def listwitems
+    list_int = List.create
+    list_items1 = params[:list][:list_items]
+    list_items1.each do |_lin, li|
+      listitem_handler list_int, li
+    end
+  end
+
+  def listitem_handler(list, hash_in)
+    li = list.list_items.new
+    hash_in.each do |k, v|
+      li[k] = v
+    end
+    li.save
+  end
+
   # PATCH/PUT /lists/1
   def update
     if @list.update(list_params)
@@ -39,13 +55,14 @@ class ListsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_list
-      @list = List.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def list_params
-      params.require(:list).permit(:active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_list
+    @list = List.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def list_params
+    params.require(:list).permit(:active)
+  end
 end
