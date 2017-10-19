@@ -1,9 +1,17 @@
+# frozen_string_literal: true
+
 class StoresController < ApplicationController
-  before_action :set_store, only: [:show, :update, :destroy]
+  before_action :set_store, only: %i[show update destroy]
 
   # GET /stores
   def index
     @stores = Store.all
+
+    render json: @stores
+  end
+
+  def indexuser
+    @stores = current_user.stores.all
 
     render json: @stores
   end
@@ -38,14 +46,15 @@ class StoresController < ApplicationController
     @store.destroy
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_store
-      @store = Store.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_store
+    @store = current_user.stores.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def store_params
-      params.require(:store).permit(:name, :location)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def store_params
+    params.require(:store).permit(:name, :location)
+  end
+
+  private :set_store, :store_params
 end
