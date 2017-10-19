@@ -28,14 +28,15 @@ class GroupMembershipsController < ProtectedController
     end
   end
 
+  # Removed: No use case
   # PATCH/PUT /group_memberships/1
-  def update
-    if @group_membership.update(group_membership_params)
-      render json: @group_membership
-    else
-      render json: @group_membership.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @group_membership.update(group_membership_params)
+  #     render json: @group_membership
+  #   else
+  #     render json: @group_membership.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /group_memberships/1
   def destroy
