@@ -13,7 +13,7 @@ class ListItemsController < ProtectedController
 
   # GET /list_items/1
   def show
-    if current_user.lists.list_items.find(params[:id])
+    if current_user.list_items.find(params[:id])
       render json: @list_item
     else
       head :no_content
