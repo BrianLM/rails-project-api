@@ -52,6 +52,7 @@ class ListItemsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def list_item_params
+    params.require(:list_item).require(:quantity, :list_id, :item_id)
     params.require(:list_item).permit(:purchased, :quantity, :list_id, :item_id)
   end
   private :set_list_item, :list_item_params
