@@ -1,4 +1,4 @@
-class PurchasesController < ApplicationController
+class PurchasesController < ProtectedController
   before_action :set_purchase, only: [:show, :update, :destroy]
 
   # GET /purchases
