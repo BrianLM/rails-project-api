@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :prices, except: %i[new edit]
   resources :list_items, except: %i[index new edit]
   resources :stores, except: %i[new edit]
-  resources :group_memberships, except: %i[new edit]
+  resources :group_memberships, except: %i[new edit update]
   resources :groups, except: %i[new edit]
   resources :lists, except: %i[new edit]
   resources :items, except: %i[new edit]
