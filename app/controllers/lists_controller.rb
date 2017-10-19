@@ -17,7 +17,7 @@ class ListsController < ProtectedController
 
   # POST /lists
   def create
-    @list = current_user.list.build(list_params)
+    @list = current_user.lists.build(list_params)
 
     if @list.save
       render json: @list, status: :created, location: @list
@@ -27,7 +27,7 @@ class ListsController < ProtectedController
   end
 
   def listwitems
-    list_int = List.create
+    list_int = current_user.lists.build
     list_items1 = params[:list][:list_items]
     list_items1.each do |_lin, li|
       listitem_handler list_int, li
