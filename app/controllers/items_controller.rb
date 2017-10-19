@@ -10,6 +10,12 @@ class ItemsController < ProtectedController
     render json: @items
   end
 
+  def indexuser
+    @items = current_user.items.all
+
+    render json: @items
+  end
+
   # GET /items/1
   def show
     render json: @item
