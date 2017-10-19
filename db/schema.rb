@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018203215) do
+ActiveRecord::Schema.define(version: 20171019145742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,9 @@ ActiveRecord::Schema.define(version: 20171018203215) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "store_id"
     t.index ["item_id"], name: "index_purchases_on_item_id"
+    t.index ["store_id"], name: "index_purchases_on_store_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
@@ -115,5 +117,6 @@ ActiveRecord::Schema.define(version: 20171018203215) do
   add_foreign_key "prices", "items"
   add_foreign_key "prices", "stores"
   add_foreign_key "purchases", "items"
+  add_foreign_key "purchases", "stores"
   add_foreign_key "purchases", "users"
 end
