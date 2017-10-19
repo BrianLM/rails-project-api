@@ -22,6 +22,7 @@ class ListItemsController < ApplicationController
 
   # POST /list_items
   def create
+    head :no_content unless current_user.lists.find(list_item_params[:list_id])
     @list_item = ListItem.new(list_item_params)
 
     if @list_item.save
