@@ -1,4 +1,4 @@
-class PricesController < ApplicationController
+class PricesController < ProtectedController
   before_action :set_price, only: [:show, :update, :destroy]
 
   # GET /prices
