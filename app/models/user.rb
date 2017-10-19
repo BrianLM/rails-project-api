@@ -4,7 +4,7 @@ class User < ApplicationRecord
   include Authentication
   has_many :examples
   has_many :lists, dependent: :destroy
-  has_many :list_items, through :lists
+  has_many :list_items, through: :lists
   has_many :items
   has_many :stores
   has_many :groups
