@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   post '/new_list' => 'lists#listwitems'
   post '/myitems' => 'items#indexuser'
   post '/mystores' => 'stores#indexuser'
+  match 'invite/:id' => 'users#showemail', :constraints => { id: /[0-z\.]+/ }, :via => [:get]
 end
