@@ -15,6 +15,11 @@ class GroupMembershipsController < ProtectedController
     render json: @group_membership
   end
 
+  # GET /group_memberships/1
+  def showmembers
+    render json: current_user.groups.find(params[:id]).group_memberships.all
+  end
+
   # POST /group_memberships
   def create
     @group_membership = current_user.group_memberships
