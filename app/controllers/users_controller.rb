@@ -54,6 +54,11 @@ class UsersController < ProtectedController
     render json: user
   end
 
+  def showemail
+    user = User.where('email LIKE ?', "#{params[:id]}%")
+    render json: user
+  end
+
   def update
     head :bad_request
   end
