@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show]
 
   post '/new_list' => 'lists#listwitems'
+  post '/myitems' => 'lists#indexuser'
 end
