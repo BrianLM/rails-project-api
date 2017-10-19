@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ListItemsController < ApplicationController
+class ListItemsController < ProtectedController
   before_action :set_list_item, only: %i[show update destroy]
 
   # Removed: No use case
