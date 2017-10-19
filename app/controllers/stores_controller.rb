@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class StoresController < ApplicationController
+class StoresController < ProtectedController
   before_action :set_store, only: %i[show update destroy]
 
   # GET /stores
