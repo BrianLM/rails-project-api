@@ -43,7 +43,6 @@ class ListItemsController < ProtectedController
 
   # DELETE /list_items/1
   def destroy
-    head :no_content unless current_user.lists.find(list_item_params[:list_id])
     @list_item.destroy
     head :no_content
   end
