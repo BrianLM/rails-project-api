@@ -21,6 +21,12 @@ class ItemsController < ProtectedController
     render json: @item
   end
 
+  def search
+    @result = Item.where('lower(name) like (?)', "%#{params[:id].downcase}%")
+
+    render json: @result
+  end
+
   # POST /items
   def create
     @item = current_user.items.build(item_params)

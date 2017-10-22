@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   post '/mystores' => 'stores#indexuser'
   match 'invite/:id' => 'users#showemail',
         :constraints => { id: /[0-z\.]+/ }, :via => [:get]
+  match 'search_items/:id' => 'items#search',
+        :constraints => { id: /[0-z\.]+/ }, :via => [:get]
 end
