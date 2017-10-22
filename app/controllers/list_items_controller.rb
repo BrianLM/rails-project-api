@@ -23,7 +23,7 @@ class ListItemsController < ProtectedController
   # POST /list_items
   def create
     head :no_content unless current_user.lists.find(list_item_params[:list_id])
-    @list_item = ListItem.new(list_item_params)
+    @list_item = current_user.list_items.build(list_item_params)
 
     if @list_item.save
       render json: @list_item, status: :created, location: @list_item
@@ -54,7 +54,7 @@ class ListItemsController < ProtectedController
 
   # Only allow a trusted parameter "white list" through.
   def list_item_params
-    params.require(:list_item).require(:quantity, :list_id, :item_id)
+    # params.require(:list_item).require(:quantity, :list_id, :item_id)
     params.require(:list_item).permit(:purchased, :quantity, :list_id, :item_id)
   end
   private :set_list_item, :list_item_params
