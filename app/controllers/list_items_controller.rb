@@ -49,7 +49,7 @@ class ListItemsController < ProtectedController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_list_item
-    @list_item = ListItem.find(params[:id])
+    @list_item = current_user.list_items.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
