@@ -25,21 +25,22 @@ class ListsController < ProtectedController
     end
   end
 
-  def listwitems
-    list_int = current_user.lists.build
-    list_items1 = params[:list][:list_items]
-    list_items1.each do |_lin, li|
-      listitem_handler list_int, li
-    end
-  end
-
-  def listitem_handler(list, hash_in)
-    li = list.list_items.new
-    hash_in.each do |k, v|
-      li[k] = v
-    end
-    li.save
-  end
+  # No supported use case from Web front-end.
+  # def listwitems
+  #   list_int = current_user.lists.build
+  #   list_items1 = params[:list][:list_items]
+  #   list_items1.each do |_lin, li|
+  #     listitem_handler list_int, li
+  #   end
+  # end
+  #
+  # def listitem_handler(list, hash_in)
+  #   li = list.list_items.new
+  #   hash_in.each do |k, v|
+  #     li[k] = v
+  #   end
+  #   li.save
+  # end
 
   # PATCH/PUT /lists/1
   def update

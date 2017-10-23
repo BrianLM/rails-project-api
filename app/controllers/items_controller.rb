@@ -10,11 +10,12 @@ class ItemsController < ProtectedController
     render json: @items
   end
 
-  def indexuser
-    @items = current_user.items.all
-
-    render json: @items
-  end
+  # No use case present.
+  # def indexuser
+  #   @items = current_user.items.all
+  #
+  #   render json: @items
+  # end
 
   # GET /items/1
   def show
@@ -38,20 +39,22 @@ class ItemsController < ProtectedController
     end
   end
 
-  # PATCH/PUT /items/1
-  def update
-    if @item.update(item_params)
-      render json: @item
-    else
-      render json: @item.errors, status: :unprocessable_entity
-    end
-  end
+  # No use case for update at this time.
+  # # PATCH/PUT /items/1
+  # def update
+  #   if @item.update(item_params)
+  #     render json: @item
+  #   else
+  #     render json: @item.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # DELETE /items/1
-  def destroy
-    @item.destroy
-    head :no_content
-  end
+  # No use case for delete at this time.
+  # # DELETE /items/1
+  # def destroy
+  #   @item.destroy
+  #   head :no_content
+  # end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_item
