@@ -7,7 +7,7 @@ class ItemsController < ProtectedController
   def index
     @items = Item.all
 
-    render json: @items
+    render json: @items.order(:id)
   end
 
   # No use case present.
@@ -39,15 +39,14 @@ class ItemsController < ProtectedController
     end
   end
 
-  # No use case for update at this time.
-  # # PATCH/PUT /items/1
-  # def update
-  #   if @item.update(item_params)
-  #     render json: @item
-  #   else
-  #     render json: @item.errors, status: :unprocessable_entity
-  #   end
-  # end
+  # PATCH/PUT /items/1
+  def update
+    if @item.update(item_params)
+      render json: @item
+    else
+      render json: @item.errors, status: :unprocessable_entity
+    end
+  end
 
   # No use case for delete at this time.
   # # DELETE /items/1
