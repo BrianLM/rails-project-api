@@ -43,7 +43,7 @@ A successful request will include the List, as well as associated List Items, an
 Available but not active is a create list with list items. Both methods on the controller and routes are not available at this time.
 
 ## Items API
-The Items API handles all item actions, and includes create, search by name, index, and read actions for the user's items. No current uses for delete and update, so functionality is removed in the controller and routes. Based on manufacturer and store behavior, a new item is believed better than updating item properties. This controller inherits from ProtectedController. No unauthenticated actions are available, however index and search actions will return non-user related items.
+The Items API handles all item actions, and includes create, update, search by name, index, and read actions for items. No current uses for delete, so functionality is removed in the controller and routes. Front end controls on update as well as controller limitations on updating a record restrict updates to user ownership. This controller inherits from ProtectedController. No unauthenticated actions are available, however index and search actions will return non-user related items.
 
 A successful request will return the item or items related to the request.
 
@@ -52,6 +52,7 @@ A successful request will return the item or items related to the request.
 | POST   | `/items`               | `items#index`     |
 | GET    | `/items/:id`           | `items#show`      |
 | GET    | `/search_items/:id`    | `items#search`    |
+| Update | `/items/:id`           | `items#update`    |
 
 Available but not active are routing for only user associated items, as well as controller actions. Based on desire for croud-source, items are not limited to users.
 
