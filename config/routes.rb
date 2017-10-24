@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   match 'search_items/:id' => 'items#search',
         :constraints => { id: /[0-z\.]+/ }, :via => [:get]
-  resources :groups, except: %i[new edit]
+  # resources :groups, except: %i[new edit]
   # get '/members/:id' => 'group_memberships#showmembers'
   # resources :group_memberships, except: %i[new edit update]
   # match 'invite/:id' => 'users#showemail',
