@@ -12,16 +12,16 @@ Rails.application.routes.draw do
 
   match 'search_items/:id' => 'items#search',
         :constraints => { id: /[0-z\.]+/ }, :via => [:get]
+  resources :groups, except: %i[new edit]
+  # get '/members/:id' => 'group_memberships#showmembers'
+  # resources :group_memberships, except: %i[new edit update]
   # match 'invite/:id' => 'users#showemail',
   #       :constraints => { id: /[0-z\.]+/ }, :via => [:get]
-  # get '/members/:id' => 'group_memberships#showmembers'
   # post '/new_list' => 'lists#listwitems'
   # post '/myitems' => 'items#indexuser'
   # post '/mystores' => 'stores#indexuser'
+  # resources :stores, except: %i[new edit]
   # resources :prices, except: %i[new edit]
   # resources :purchases, except: %i[new edit]
-  # resources :stores, except: %i[new edit]
-  # resources :group_memberships, except: %i[new edit update]
-  # resources :groups, except: %i[new edit]
   # resources :examples, except: %i[new edit]
 end
